@@ -20,22 +20,47 @@ namespace Learning
         }
     }
 
-    class Student
+    class Calculator
     {
-        private int number;
-        public Student()
+        public static float add(float a, float b)
         {
-            number = 0;
+            return a + b;
         }
 
-        public int getNumber()
+        public static float sub(float a, float b)
         {
-            return number;
+            return a - b;
         }
 
-        public void setNumber(int number)
+        public static float mul(float a, float b)
         {
-            this.number = number;
+            return a * b;
+        }
+
+        public static float div(float a, float b)
+        {
+            return a / b;
+        }
+
+        public static float pow(float a, float p)
+        {
+            float res = a;
+            if (p > 0)
+            {
+                for (int i = 1; i < p; i++)
+                {
+                    res *= res;
+                }
+            }
+            else if (p < 0)
+            {
+
+            }
+            else if (p == 0)
+            {
+
+            }
+            return res;
         }
     }
 }

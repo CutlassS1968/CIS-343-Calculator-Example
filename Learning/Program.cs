@@ -4,7 +4,7 @@ namespace Learning
 {
     class Program
     {
-        private Student student;
+        private Calculator calculator;
         static void Main(string[] args)
         {
             Program program = new Program();
@@ -12,11 +12,31 @@ namespace Learning
 
         public Program()
         {
-            student = new Student();
-            System.Console.WriteLine(student.getNumber());
+            string a = Console.ReadLine();
+            string b = Console.ReadLine();
+            string op = Console.ReadLine();
 
-            student.setNumber(1);
-            System.Console.WriteLine(student.getNumber());
+            float res = 0;
+
+            switch (op)
+            {
+                case '+':
+                    res = Calculator.add(a, b);
+                    break;
+                case '-':
+                    res = Calculator.sub(a, b);
+                    break;
+                case '*':
+                    res = Calculator.mul(a, b);
+                    break;
+                case '/':
+                    res = Calculator.div(a, b);
+                    break;
+                case '**':
+                    res = Calculator.pow(a, b);
+            }
+
+            Console.WriteLine(res);
         }
     }
 
@@ -42,23 +62,27 @@ namespace Learning
             return a / b;
         }
 
-        public static float pow(float a, float p)
+        public static float pow(float a, float n)
         {
             float res = a;
-            if (p > 0)
+            if (n % 2 == 0)
             {
-                for (int i = 1; i < p; i++)
+                int exp = n / 2;
+                res = (a * a);
+                for (int i = 1; i < exp; i++)
                 {
                     res *= res;
                 }
             }
-            else if (p < 0)
+            else
             {
-
-            }
-            else if (p == 0)
-            {
-
+                int exp = (n - 1) / 2;
+                int res = (a * a);
+                for (int i = 1; i < exp; i++)
+                {
+                    res *= res;
+                }
+                res = a * res; 
             }
             return res;
         }
